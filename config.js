@@ -4,7 +4,7 @@ module.exports = {
     dev: "mongodb://localhost/northcoders-news-api"
   },
   PORT: {
-    test: 3090,
-    dev: 3000
+    test: 4090,
+    dev: 4000
   }
 };
