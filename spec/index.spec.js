@@ -70,4 +70,14 @@ describe("api", () => {
         });
     });
   });
+  describe("PUT /articles/:article_id", () => {
+    it("increments votes on articles by 1", () => {
+      return request(app)
+        .put(`/api/articles/${usefulData.articles[0]._id}?vote=UP`)
+        .then(res => {
+          expect(res.body.belongs_to).to.equal("cats");
+          expect(res.body.votes).to.equal(1);
+        });
+    });
+  });
 });

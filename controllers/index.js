@@ -50,10 +50,24 @@ function postComment(req, res, next) {
   });
 }
 
+function voteArticles(req, res, next) {
+  let inc = 0;
+  if (req.query.vote === "UP") inc = 1;
+  else if (req.query.vote === "DOWN") inc = -1;
+  Articles.findByIdAndUpdate(
+    req.params.article_id,
+    { $inc: { votes: inc } },
+    { new: true }
+  )
+    .then(article => res.send(article))
+    .catch(err => next(err));
+}
+
 module.exports = {
   getAllArticles,
   getAllTopics,
   getArticlesTopicId,
   getCommentsForArticles,
-  postComment
+  postComment,
+  voteArticles
 };
