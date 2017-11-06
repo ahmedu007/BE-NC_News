@@ -5,7 +5,8 @@ const {
   getAllArticles,
   getAllTopics,
   getArticlesTopicId,
-  getCommentsForArticles
+  getCommentsForArticles,
+  postComment
 } = require("../controllers/");
 
 router.get("/articles", getAllArticles);
@@ -15,5 +16,7 @@ router.get("/topics", getAllTopics);
 router.get("/topics/:topic/articles", getArticlesTopicId);
 
 router.get("/articles/:article_id/comments", getCommentsForArticles);
+
+router.post("/articles/:article_id/comments", postComment);
 
 module.exports = router;
