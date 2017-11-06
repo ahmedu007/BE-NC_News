@@ -11,6 +11,15 @@ function getAllArticles(req, res, next) {
     .catch(err => next(err));
 }
 
+function getAllTopics(req, res, next) {
+  Topics.find()
+    .then(topics => {
+      return res.status(200).send({ topics });
+    })
+    .catch(err => next(err));
+}
+
 module.exports = {
-  getAllArticles
+  getAllArticles,
+  getAllTopics
 };

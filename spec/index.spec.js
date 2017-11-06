@@ -27,14 +27,14 @@ describe("api", () => {
           expect(res.body.articles.length).to.equal(2);
         });
     });
-    // it("sends back correct array of topics with a 200 status code", () => {
-    //   return request(app)
-    //     .get("/api/topics")
-    //     .expect(200)
-    //     .then(res => {
-    //       expect(res.body.topics.length).to.equal(3);
-    //     });
-    // });
+    it("sends back correct array of topics with a 200 status code", () => {
+      return request(app)
+        .get("/api/topics")
+        .expect(200)
+        .then(res => {
+          expect(res.body.topics.length).to.equal(3);
+        });
+    });
     // it("sends back correct articles on the topic with a 200 status code", () => {
     //   return request(app)
     //     .get("/api/topics/football/articles")
