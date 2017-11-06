@@ -79,5 +79,13 @@ describe("api", () => {
           expect(res.body.votes).to.equal(1);
         });
     });
+    it("increments votes on comments by 1", () => {
+      return request(app)
+        .put(`/api/comments/${usefulData.comments[0]._id}?vote=UP`)
+        .then(res => {
+          expect(res.body.created_by).to.equal("northcoder");
+          expect(res.body.votes).to.equal(1);
+        });
+    });
   });
 });
