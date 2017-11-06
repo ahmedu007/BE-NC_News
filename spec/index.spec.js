@@ -35,15 +35,15 @@ describe("api", () => {
           expect(res.body.topics.length).to.equal(3);
         });
     });
-    // it("sends back correct articles on the topic with a 200 status code", () => {
-    //   return request(app)
-    //     .get("/api/topics/football/articles")
-    //     .expect(200)
-    //     .then(res => {
-    //       expect(res.body).to.be.an("object");
-    //       expect(res.body.articles).to.be.an("array");
-    //     });
-    // });
+    it("sends back correct articles on the topic with a 200 status code", () => {
+      return request(app)
+        .get("/api/topics/football/articles")
+        .expect(200)
+        .then(res => {
+          expect(res.body).to.be.an("object");
+          expect(res.body.articles).to.be.an("array");
+        });
+    });
     // it("sends back correct comments according to the articles with a 200 status code", () => {
     //   return request(app)
     //     .get("/api/articles/59cccb9c63a45a06c008d9d9/comments")
