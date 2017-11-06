@@ -86,6 +86,15 @@ function deleteComment(req, res, next) {
   res.send("Comment deleted");
 }
 
+function getUserData(req, res, next) {
+  console.log(req.params.username);
+  Users.find({ username: req.params.username })
+    .then(userinfo => {
+      return res.status(200).send({ userinfo });
+    })
+    .catch(err => next(err));
+}
+
 module.exports = {
   getAllArticles,
   getAllTopics,
@@ -94,5 +103,6 @@ module.exports = {
   postComment,
   voteArticles,
   voteComments,
-  deleteComment
+  deleteComment,
+  getUserData
 };

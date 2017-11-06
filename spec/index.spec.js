@@ -18,6 +18,7 @@ describe("api", () => {
       })
       .catch(err => console.log("error!", err));
   });
+
   describe("GET /articles", () => {
     it("sends back correct object with a 200 status code", () => {
       return request(app)
@@ -54,6 +55,7 @@ describe("api", () => {
         });
     });
   });
+
   describe("POST /", function() {
     it("adds a comments according to the articles with a 200 status code", () => {
       let test = {
@@ -70,6 +72,7 @@ describe("api", () => {
         });
     });
   });
+
   describe("PUT /articles/:article_id", () => {
     it("increments votes on articles by 1", () => {
       return request(app)
@@ -94,8 +97,18 @@ describe("api", () => {
         .del(`/api/comments/${usefulData.comments[0]._id}`)
         .expect(200)
         .then(res => {
-          console.log(res.body);
           expect(res.body).to.be.an("object");
+        });
+    });
+  });
+  describe("GET /users/:username", () => {
+    it("gets a user by username", () => {
+      return request(app)
+        .get(`/api/users/${usefulData.user.username}`)
+        .expect(200)
+        .then(res => {
+          expect(res.body).to.be.an("object");
+          expect(res.body.userinfo[0].username).to.equal("northcoder");
         });
     });
   });
