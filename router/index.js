@@ -8,7 +8,8 @@ const {
   getCommentsForArticles,
   postComment,
   voteArticles,
-  voteComments
+  voteComments,
+  deleteComment
 } = require("../controllers/");
 
 router.get("/articles", getAllArticles);
@@ -24,5 +25,7 @@ router.post("/articles/:article_id/comments", postComment);
 router.put("/articles/:article_id", voteArticles);
 
 router.put("/comments/:comment_id", voteComments);
+
+router.delete("/comments/:comment_id", deleteComment);
 
 module.exports = router;

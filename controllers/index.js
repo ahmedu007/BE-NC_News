@@ -79,6 +79,13 @@ function voteComments(req, res, next) {
     });
 }
 
+function deleteComment(req, res, next) {
+  Comments.findByIdAndRemove(req.params.comment_id, err => {
+    if (err) console.error(err);
+  });
+  res.send("Comment deleted");
+}
+
 module.exports = {
   getAllArticles,
   getAllTopics,
@@ -86,5 +93,6 @@ module.exports = {
   getCommentsForArticles,
   postComment,
   voteArticles,
-  voteComments
+  voteComments,
+  deleteComment
 };

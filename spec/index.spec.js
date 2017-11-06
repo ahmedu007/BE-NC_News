@@ -88,4 +88,15 @@ describe("api", () => {
         });
     });
   });
+  describe("DELETE /comments/:comment_id", () => {
+    it("deletes a comment", () => {
+      return request(app)
+        .del(`/api/comments/${usefulData.comments[0]._id}`)
+        .expect(200)
+        .then(res => {
+          console.log(res.body);
+          expect(res.body).to.be.an("object");
+        });
+    });
+  });
 });
