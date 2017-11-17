@@ -1,3 +1,5 @@
+const dotenv = require("dotenv").config();
+
 module.exports = {
   DB: {
     test: "mongodb://localhost/northcoders-news-api-test",
@@ -5,6 +7,6 @@ module.exports = {
   },
   PORT: {
     test: 4090,
-    dev: 4000
+    dev: process.env.PORT || 4000
   }
 };
