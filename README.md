@@ -1,6 +1,11 @@
 <h1>NC News (Backend)</h1>
     <h2><em>by <strong>Umair Ahmed</strong></em></h2>
 
+```
+https://nc-news-be.herokuapp.com/
+```
+
+
 <h3>
         <ins>API Endpoints</ins>
     </h3>
