@@ -27,6 +27,14 @@ function getArticlesTopicId(req, res, next) {
     .catch(err => next(err));
 }
 
+function getArticleById(req, res, next) {
+  Articles.find({ _id: req.params.article_id })
+    .then(article => {
+      return res.status(200).send({ article });
+    })
+    .catch(error => next(error));
+}
+
 function getCommentsForArticles(req, res, next) {
   Comments.find({ belongs_to: req.params.article_id })
     .then(comment => {
@@ -87,7 +95,6 @@ function deleteComment(req, res, next) {
 }
 
 function getUserData(req, res, next) {
-  console.log(req.params.username);
   Users.find({ username: req.params.username })
     .then(userinfo => {
       return res.status(200).send({ userinfo });
@@ -104,5 +111,6 @@ module.exports = {
   voteArticles,
   voteComments,
   deleteComment,
-  getUserData
+  getUserData,
+  getArticleById
 };

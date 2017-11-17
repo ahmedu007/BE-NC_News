@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheet.css">
+
+
+    <title>API List</title>
+</head>
+
+<body>
+    <h1>NC News (Backend)</h1>
+    <h2>
+        <em>by
+            <strong>Umair Ahmed</strong>
+        </em>
+    </h2>
+
+    <h3>
+        <ins>API Endpoints</ins>
+    </h3>
+
+    <p>All of these API's return a JSON object</p>
+
+    <div class="container">
+        <div class="box">
+            <strong>GET</strong>
+            <em>/api/topics</em>
+            <p>Returns all the topics</p>
+        </div>
+
+        <br />
+
+        <div class="box">
+            <strong>GET</strong>
+            <em>/api/topics/:topic/articles</em>
+            <p>Returns all the articles for a certain topic</p>
+        </div>
+
+        <br />
+
+        <div class="box">
+            <strong>GET</strong>
+            <em>/api/articles</em>
+            <p>Returns all the articles</p>
+        </div>
+
+        <br />
+
+        <div class="box">
+            <strong>GET</strong>
+            <em>/api/articles/:article_id</em>
+            <p>Returns the specified article</p>
+        </div>
+
+        <br />
+
+        <div class="box">
+            <strong>GET</strong>
+            <em>/api/articles/:article_id/comments</em>
+            <p>Returns all the comments for a individual article</p>
+        </div>
+
+        <br />
+
+        <div class="box">
+            <strong>GET</strong>
+            <em>/api/users/:username</em>
+            <p>Returns a JSON object with the profile data for the specified user.</p>
+        </div>
+
+        <br />
+
+        <div class="box">
+            <strong>POST</strong>
+            <em>/api/articles/:article_id/comments</em>
+            <p>Adds a new comment to an article. This route requires a
+                <strong>JSON body</strong> with a
+                <strong>comment</strong> key and value pair</p>
+        </div>
+
+        <br />
+
+        <div class="box">
+            <strong>PUT</strong>
+            <em>/api/articles/:article_id</em>
+            <p>Increment or Decrement the votes of an article by one. This route requires a vote query of 'up' or 'down'
+                <p>e.g:
+                    <em>/api/articles/:article_id?vote=up</em>
+                </p>
+            </p>
+        </div>
+
+        <br />
+
+        <div class="box">
+            <strong>PUT</strong>
+            <em>/api/comments/:comment_id</em>
+            <p>Increment or Decrement the votes of a comment by one. This route requires a vote query of 'up' or 'down'
+                <p>e.g:
+                    <em>/api/comments/:comment_id?vote=down</em>
+                </p>
+            </p>
+        </div>
+
+        <br />
+
+        <div class="box">
+            <strong>DELETE</strong>
+            <em>/api/comments/:comment_id</em>
+            <p>Deletes a comment if the comment was created by the Northcoder user
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

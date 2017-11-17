@@ -10,7 +10,8 @@ const {
   voteArticles,
   voteComments,
   deleteComment,
-  getUserData
+  getUserData,
+  getArticleById
 } = require("../controllers/");
 
 router.get("/articles", getAllArticles);
@@ -18,6 +19,8 @@ router.get("/articles", getAllArticles);
 router.get("/topics", getAllTopics);
 
 router.get("/topics/:topic/articles", getArticlesTopicId);
+
+router.get("/articles/:article_id", getArticleById);
 
 router.get("/articles/:article_id/comments", getCommentsForArticles);
 

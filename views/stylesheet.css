@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:300italic,400,400italic,700,700italic");
+@import url("https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700,700italic");
+
+body {
+  background: #92792d;
+}
+
+h1 {
+  color: rgb(255, 255, 255);
+  font-family: "Ubuntu";
+  font-size: 42px;
+  font-weight: 400;
+  margin: 0 auto 45px;
+  max-width: 600px;
+  padding: 45px 0;
+  padding-bottom: 0;
+  text-align: center;
+}
+
+h3 {
+  color: #fff;
+  font-family: "Ubuntu";
+  margin: 0 auto 45px;
+  max-width: 600px;
+  padding: 45px 0;
+  text-align: auto;
+  font-size: 30px;
+}
+
+h2 {
+  color: #fff;
+  font-family: "Ubuntu";
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 36px;
+  margin: 0 auto 36px;
+  max-width: 400px;
+  text-align: auto;
+}
+p {
+  color: #fff;
+  font-family: "Ubuntu";
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 36px;
+  margin: 0 auto 36px;
+  max-width: 1000px;
+  text-align: left;
+}
+
+a {
+  color: #e65634;
+}
+
+a:hover {
+  color: #fff;
+}
+
+div {
+  font-size: 25px;
+}
