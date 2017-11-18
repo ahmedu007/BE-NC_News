@@ -31,9 +31,13 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "views")));
 
 app.get("/", (req, res) => {
-  res.render("pages/index");
+  res.status(200).render("pages/index");
 });
 
 app.use("/api", router);
+
+app.get("*", (req, res) => {
+  res.status(404).render("pages/404");
+});
 
 module.exports = app;
