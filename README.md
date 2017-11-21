@@ -2,7 +2,7 @@
     <h2><em>by <strong>Umair Ahmed</strong></em></h2>
 
 ```
-https://nc-news-be.herokuapp.com/
+https://umair-ncnews-be.herokuapp.com/
 ```
 
 
