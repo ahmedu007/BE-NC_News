@@ -54,6 +54,16 @@ describe("api", () => {
           expect(res.body.comment).to.be.an("array");
         });
     });
+    it("sends back correct article according to the ID with a 200 status code", () => {
+      return request(app)
+        .get("/api/articles/5a0f2cebdd8b1e02e55fd063")
+        .expect(200)
+        .then(res => {
+          expect(res.body).to.be.an("object");
+          expect(res.body.article).to.be.an("array");
+          expect(res.body.article.length).to.equal(1);
+        });
+    });
   });
 
   describe("POST /", function() {

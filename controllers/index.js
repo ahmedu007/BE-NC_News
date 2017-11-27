@@ -1,10 +1,8 @@
-const { Articles, Topics, Comments, Users } = require("../models");
+const { Article, Topic, Comment, User } = require("../models");
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const Comment = require("../models/");
 
 function getAllArticles(req, res, next) {
-  Articles.find()
+  Article.find()
     .then(articles => {
       return res.status(200).send({ articles });
     })
@@ -12,7 +10,7 @@ function getAllArticles(req, res, next) {
 }
 
 function getAllTopics(req, res, next) {
-  Topics.find()
+  Topic.find()
     .then(topics => {
       return res.status(200).send({ topics });
     })
@@ -20,7 +18,7 @@ function getAllTopics(req, res, next) {
 }
 
 function getArticlesTopicId(req, res, next) {
-  Articles.find({ belongs_to: req.params.topic })
+  Article.find({ belongs_to: req.params.topic })
     .then(articles => {
       return res.status(200).send({ articles });
     })
@@ -28,7 +26,7 @@ function getArticlesTopicId(req, res, next) {
 }
 
 function getArticleById(req, res, next) {
-  Articles.find({ _id: req.params.article_id })
+  Article.find({ _id: req.params.article_id })
     .then(article => {
       return res.status(200).send({ article });
     })
@@ -36,7 +34,7 @@ function getArticleById(req, res, next) {
 }
 
 function getCommentsForArticles(req, res, next) {
-  Comments.find({ belongs_to: req.params.article_id })
+  Comment.find({ belongs_to: req.params.article_id })
     .then(comment => {
       return res.status(200).send({ comment });
     })
@@ -49,20 +47,21 @@ function postComment(req, res, next) {
     belongs_to: req.params.article_id
   });
 
-  comment.save(err => {
-    if (err) console.log(err);
-    else {
-      console.log("Posted a new comment");
-      return res.status(200).send("Posted new comment");
-    }
-  });
+  comment
+    .save()
+    .then(comment => {
+      res.status(200).send("Posted new comment");
+    })
+    .catch(err => {
+      next(err);
+    });
 }
 
 function voteArticles(req, res, next) {
   let inc = 0;
   if (req.query.vote === "UP") inc = 1;
   else if (req.query.vote === "DOWN") inc = -1;
-  Articles.findByIdAndUpdate(
+  Article.findByIdAndUpdate(
     req.params.article_id,
     { $inc: { votes: inc } },
     { new: true }
@@ -75,7 +74,7 @@ function voteComments(req, res, next) {
   let inc = 0;
   if (req.query.vote === "UP") inc = 1;
   else if (req.query.vote === "DOWN") inc = -1;
-  Comments.findByIdAndUpdate(
+  Comment.findByIdAndUpdate(
     req.params.comment_id,
     { $inc: { votes: inc } },
     { new: true }
@@ -88,14 +87,20 @@ function voteComments(req, res, next) {
 }
 
 function deleteComment(req, res, next) {
-  Comments.findByIdAndRemove(req.params.comment_id, err => {
-    if (err) console.error(err);
-  });
-  res.send("Comment deleted");
+  Comment.findByIdAndRemove({ _id: req.params.comment_id })
+    .then(comment => {
+      if (!comment) {
+        next();
+      }
+      res.status(200).send("Comment deleted");
+    })
+    .catch(err => {
+      next(err);
+    });
 }
 
 function getUserData(req, res, next) {
-  Users.find({ username: req.params.username })
+  User.find({ username: req.params.username })
     .then(userinfo => {
       return res.status(200).send({ userinfo });
     })
