@@ -42,7 +42,7 @@ function getCommentsForArticles(req, res, next) {
 }
 
 function postComment(req, res, next) {
-  let comment = new Comments({
+  let comment = new Comment({
     body: req.body.comment,
     belongs_to: req.params.article_id
   });
