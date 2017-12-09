@@ -36,7 +36,6 @@ app.get("*", (req, res) => {
 
 app.use((req, res, next) => {
   res.status(400).send("Bad Request");
-  res.status(404).send("Error 404, Page is not found");
 });
 
 app.use((err, req, res, next) => {
