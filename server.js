@@ -34,4 +34,13 @@ app.get("*", (req, res) => {
   res.status(404).render("pages/404");
 });
 
+app.use((req, res, next) => {
+  res.status(400).send("Bad Request");
+  res.status(404).send("Error 404, Page is not found");
+});
+
+app.use((err, req, res, next) => {
+  res.status(500).send("Server encountered an Internal error");
+});
+
 module.exports = app;

@@ -50,7 +50,7 @@ function postComment(req, res, next) {
   comment
     .save()
     .then(comment => {
-      res.status(200).send("Posted new comment");
+      res.status(200).send({ comment });
     })
     .catch(err => {
       next(err);

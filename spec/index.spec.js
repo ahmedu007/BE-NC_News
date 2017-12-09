@@ -66,7 +66,29 @@ describe("api", () => {
     });
   });
 
-  describe("POST /", function() {
+  describe.only("POST /", function() {
+    it("it returns with a status code of 200 if successful", () => {
+      const comment = "this is a test comment";
+      return request(app)
+        .post(`/api/articles/${usefulData.articles[0]._id}/comments`)
+        .send({
+          comment
+        })
+        .expect(200);
+    });
+
+    it.only("returns the comment after successful post", () => {
+      const comment = "this is a test comment";
+      return request(app)
+        .post(`/api/articles/${usefulData.articles[0]._id}/comments`)
+        .send({
+          comment
+        })
+        .then(res => {
+          expect(res.body.comment).to.equal(comment);
+        });
+    });
+
     it("adds a comments according to the articles with a 200 status code", () => {
       let test = {
         comment: "Hey there. This is giving me headache",
