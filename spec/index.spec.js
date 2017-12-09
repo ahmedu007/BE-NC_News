@@ -66,7 +66,7 @@ describe("api", () => {
     });
   });
 
-  describe.only("POST /", function() {
+  describe("POST /", function() {
     it("it returns with a status code of 200 if successful", () => {
       const comment = "this is a test comment";
       return request(app)
@@ -77,7 +77,7 @@ describe("api", () => {
         .expect(200);
     });
 
-    it.only("returns the comment after successful post", () => {
+    it("returns the comment after successful post", () => {
       const comment = "this is a test comment";
       return request(app)
         .post(`/api/articles/${usefulData.articles[0]._id}/comments`)
@@ -85,22 +85,7 @@ describe("api", () => {
           comment
         })
         .then(res => {
-          expect(res.body.comment).to.equal(comment);
-        });
-    });
-
-    it("adds a comments according to the articles with a 200 status code", () => {
-      let test = {
-        comment: "Hey there. This is giving me headache",
-        belongs_to: "football"
-      };
-      return request(app)
-        .post(`/api/articles/${usefulData.articles[0]._id}/comments`)
-        .send(test)
-        .expect(200)
-        .then(res => {
-          expect(res.body).to.be.an("object");
-          expect(usefulData.comments.length).to.equal(2);
+          expect(res.body.comment.body).to.equal(comment);
         });
     });
   });
