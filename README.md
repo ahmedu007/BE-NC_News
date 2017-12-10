@@ -43,3 +43,26 @@ npm test
 * [ExpressJS](https://expressjs.com/) - The server framework used
 * [MongoDB](https://www.mongodb.com/) - The Database for storing information
 * [Mongoose](http://mongoosejs.com/) - Mongodb object modeling for node.js
+
+## List of Available Routes
+
+GET
+
+* /api/topics
+* /api/articles
+* /api/users/:username
+* /topics/:topic_id/articles
+* /articles/:article_id/comments
+
+POST
+
+* /articles/:article_id/comments
+
+PUT
+
+* /articles/:article_id
+* /comments/:comment_id
+
+DELETE
+
+* /comments/:comment_id
