@@ -51,18 +51,18 @@ GET
 * /api/topics
 * /api/articles
 * /api/users/:username
-* /topics/:topic_id/articles
-* /articles/:article_id/comments
+* /api/topics/:topic_id/articles
+* /api/articles/:article_id/comments
 
 POST
 
-* /articles/:article_id/comments
+* /api/articles/:article_id/comments
 
 PUT
 
-* /articles/:article_id
-* /comments/:comment_id
+* /api/articles/:article_id
+* /api/comments/:comment_id
 
 DELETE
 
-* /comments/:comment_id
+* /api/comments/:comment_id
