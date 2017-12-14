@@ -61,7 +61,14 @@ describe("api", () => {
         .then(res => {
           expect(res.body).to.be.an("object");
           expect(res.body.article).to.be.an("array");
-          // expect(res.body.article.length).to.equal(1);
+        });
+    });
+    it("returns with a 404 if given article id is not found", () => {
+      return request(app)
+        .get("/api/articles/test")
+        .expect(400)
+        .then(res => {
+          expect(res.status).to.eql(400);
         });
     });
   });
