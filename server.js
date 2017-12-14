@@ -34,8 +34,14 @@ app.get("*", (req, res) => {
   res.status(404).render("pages/404");
 });
 
-app.use((req, res, next) => {
-  res.status(400).send("Bad Request");
+app.use((err, req, res, next) => {
+  if (err.status === 404) {
+    return res.status(404).send("Page Not Found");
+  }
+  if (err.status === 400) {
+    return res.status(400).send("Bad Request");
+  }
+  next(err);
 });
 
 app.use((err, req, res, next) => {
