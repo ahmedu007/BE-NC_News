@@ -1,5 +1,3 @@
-const dotenv = require("dotenv").config();
-
 module.exports = {
   DB: {
     test: "mongodb://localhost/northcoders-news-api-test",
