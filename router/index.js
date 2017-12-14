@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { json } = require("body-parser");
 const mongoose = require("mongoose");
+const articles = require("./articles");
 const {
   getAllArticles,
   getAllTopics,
@@ -14,19 +15,11 @@ const {
   getArticleById
 } = require("../controllers/");
 
-router.get("/articles", getAllArticles);
+router.use("/articles", articles);
 
 router.get("/topics", getAllTopics);
 
 router.get("/topics/:topic/articles", getArticlesTopicId);
-
-router.get("/articles/:article_id", getArticleById);
-
-router.get("/articles/:article_id/comments", getCommentsForArticles);
-
-router.post("/articles/:article_id/comments", postComment);
-
-router.put("/articles/:article_id", voteArticles);
 
 router.put("/comments/:comment_id", voteComments);
 

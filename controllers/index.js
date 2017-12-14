@@ -22,7 +22,15 @@ function getArticlesTopicId(req, res, next) {
     .then(articles => {
       return res.status(200).send({ articles });
     })
-    .catch(err => next(err));
+    .catch(err => {
+      if (err.name === "CastError")
+        return next({
+          status: 400,
+          message: "Invalid ID",
+          err
+        });
+      next(err);
+    });
 }
 
 function getArticleById(req, res, next) {
@@ -30,7 +38,15 @@ function getArticleById(req, res, next) {
     .then(article => {
       return res.status(200).send({ article });
     })
-    .catch(error => next(error));
+    .catch(err => {
+      if (err.name === "CastError")
+        return next({
+          status: 400,
+          message: "Invalid ID",
+          err
+        });
+      next(err);
+    });
 }
 
 function getCommentsForArticles(req, res, next) {
