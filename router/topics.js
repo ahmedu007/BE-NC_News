@@ -3,6 +3,6 @@ const { getAllTopics, getArticlesTopicId } = require("../controllers/");
 
 router.get("/", getAllTopics);
 
-router.get("/topics/:topic/articles", getArticlesTopicId);
+router.get("/:topic/articles", getArticlesTopicId);
 
 module.exports = router;

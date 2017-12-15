@@ -9,12 +9,12 @@ const {
 
 router.get("/", getAllArticles);
 
-router.get("/articles/:article_id", getArticleById);
+router.get("/:article_id", getArticleById);
 
-router.get("/articles/:article_id/comments", getCommentsForArticles);
+router.get("/:article_id/comments", getCommentsForArticles);
 
-router.post("/articles/:article_id/comments", postComment);
+router.post("/:article_id/comments", postComment);
 
-router.put("/articles/:article_id", voteArticles);
+router.put("/:article_id", voteArticles);
 
 module.exports = router;
