@@ -32,7 +32,15 @@ Then open your browser and navigate to `http://localhost:4000/`
 
 #### Seeding the Database
 
-Before running the server or the tests ensure that mongodb is running on your local machine. To seed the database run
+Before running the server or the tests ensure that mongodb is running on your local machine. You can do that by running
+
+```
+mongod
+```
+
+on your bash terminal.
+
+To seed the database run
 
 ```
 npm run seed-db
