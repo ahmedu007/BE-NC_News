@@ -54,7 +54,15 @@ function getCommentsForArticles(req, res, next) {
     .then(comment => {
       return res.status(200).send({ comment });
     })
-    .catch(err => next(err));
+    .catch(err => {
+      if (err.name === "CastError")
+        return next({
+          status: 400,
+          message: "Invalid ID",
+          err
+        });
+      next(err);
+    });
 }
 
 function postComment(req, res, next) {
@@ -83,7 +91,15 @@ function voteArticles(req, res, next) {
     { new: true }
   )
     .then(article => res.send(article))
-    .catch(err => next(err));
+    .catch(err => {
+      if (err.name === "CastError")
+        return next({
+          status: 400,
+          message: "Invalid Request",
+          err
+        });
+      next(err);
+    });
 }
 
 function voteComments(req, res, next) {
@@ -97,7 +113,12 @@ function voteComments(req, res, next) {
   )
     .then(comment => res.send(comment))
     .catch(err => {
-      if (err.name === "CastError") return next({ err, type: 404 });
+      if (err.name === "CastError")
+        return next({
+          status: 400,
+          message: "Invalid Request",
+          err
+        });
       next(err);
     });
 }
@@ -111,6 +132,12 @@ function deleteComment(req, res, next) {
       res.status(200).send("Comment deleted");
     })
     .catch(err => {
+      if (err.name === "CastError")
+        return next({
+          status: 400,
+          message: "Invalid ID",
+          err
+        });
       next(err);
     });
 }
@@ -120,7 +147,15 @@ function getUserData(req, res, next) {
     .then(userinfo => {
       return res.status(200).send({ userinfo });
     })
-    .catch(err => next(err));
+    .catch(err => {
+      if (err.name === "CastError")
+        return next({
+          status: 400,
+          message: "Invalid Username",
+          err
+        });
+      next(err);
+    });
 }
 
 module.exports = {
