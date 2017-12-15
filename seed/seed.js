@@ -35,7 +35,7 @@ mongoose.connect(DBs.dev, function(err) {
 });
 
 function addNorthcoderUser(done) {
-  var userDoc = new models.Users({
+  var userDoc = new models.User({
     username: "northcoder",
     name: "Awesome Northcoder",
     avatar_url: "https://avatars3.githubusercontent.com/u/6791502?v=3&s=200"
@@ -53,7 +53,7 @@ function addUsers(done) {
   async.eachSeries(
     userData,
     function(user, cb) {
-      var userDoc = new models.Users(user);
+      var userDoc = new models.User(user);
       userDoc.save(function(err) {
         if (err) {
           return cb(err);
@@ -78,7 +78,7 @@ function addTopics(done) {
         title: topic,
         slug: topic.toLowerCase()
       };
-      var topicDoc = new models.Topics(topicObj);
+      var topicDoc = new models.Topic(topicObj);
       topicDoc.save(function(err, doc) {
         if (err) {
           logger.error(JSON.stringify(err));
@@ -111,7 +111,7 @@ function addArticles(topicDocs, done) {
           usersArticle.created_by = user.username;
           usersArticle.belongs_to = topic.slug;
           usersArticle.votes = _.sample(_.range(2, 11));
-          var usersArticleDoc = new models.Articles(usersArticle);
+          var usersArticleDoc = new models.Article(usersArticle);
           usersArticleDoc.save(function(err, doc) {
             if (err) {
               logger.error(JSON.stringify(err));
@@ -123,7 +123,7 @@ function addArticles(topicDocs, done) {
             usersArticleTwo.created_by = user.username;
             usersArticleTwo.belongs_to = topic.slug;
             usersArticleTwo.votes = _.sample(_.range(2, 11));
-            var usersArticleTwoDoc = new models.Articles(usersArticleTwo);
+            var usersArticleTwoDoc = new models.Article(usersArticleTwo);
             usersArticleTwoDoc.save(function(err, doc2) {
               if (err) {
                 logger.error(JSON.stringify(err));
@@ -163,7 +163,7 @@ function addComments(docIds, done) {
             votes: _.sample(_.range(2, 11)),
             created_at: getRandomStamp()
           };
-          var commentDoc = new models.Comments(comment);
+          var commentDoc = new models.Comment(comment);
           commentDoc.save(function(err) {
             if (err) {
               return cb(err);
